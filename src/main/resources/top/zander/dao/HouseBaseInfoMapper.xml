@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="top.zander.mapper.HouseBaseInfoMapper" >
+<mapper namespace="top.zander.dao.HouseBaseInfoMapper" >
   <resultMap id="BaseResultMap" type="top.zander.model.HouseBaseInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="house_record" property="houseRecord" jdbcType="BIGINT" />
@@ -47,7 +47,7 @@
       #{heating,jdbcType=VARCHAR}, #{lift,jdbcType=VARCHAR}, #{rightYear,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="HouseBaseInfo" >
+  <insert id="insertSelective" parameterType="top.zander.model.HouseBaseInfo" >
     insert into house_base_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -144,7 +144,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="HouseBaseInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="top.zander.model.HouseBaseInfo" >
     update house_base_info
     <set >
       <if test="houseRecord != null" >
@@ -192,7 +192,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="HouseBaseInfo" >
+  <update id="updateByPrimaryKey" parameterType="top.zander.model.HouseBaseInfo" >
     update house_base_info
     set house_record = #{houseRecord,jdbcType=BIGINT},
       layout_detail = #{layoutDetail,jdbcType=VARCHAR},

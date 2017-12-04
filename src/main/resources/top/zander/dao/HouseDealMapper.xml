@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.zander.mapper.HouseDealMapper">
-  <resultMap id="BaseResultMap" type="HouseDeal">
+<mapper namespace="top.zander.dao.HouseDealMapper">
+  <resultMap id="BaseResultMap" type="top.zander.model.HouseDeal">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="house_record" jdbcType="BIGINT" property="houseRecord" />
     <result column="create_time" jdbcType="DATE" property="createTime" />
@@ -27,13 +27,13 @@
     delete from house_deal
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="HouseDeal">
+  <insert id="insert" parameterType="top.zander.model.HouseDeal">
     insert into house_deal (id, house_record,create_time, ownership, last_deal_time, use_type, use_years, right_type,
     pledge_info, attachment)
     values (#{id}, #{houseRecord},#{createTime},#{ownership},#{lastDealTime},#{useType},
     #{useYears},#{rightType},#{pledgeInfo},#{attachment})
   </insert>
-  <insert id="insertSelective" parameterType="HouseDeal">
+  <insert id="insertSelective" parameterType="top.zander.model.HouseDeal">
     insert into house_deal
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -100,7 +100,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="HouseDeal">
+  <update id="updateByPrimaryKeySelective" parameterType="top.zander.model.HouseDeal">
     update house_deal
     <set>
       <if test="houseRecord != null">
@@ -133,7 +133,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="HouseDeal">
+  <update id="updateByPrimaryKey" parameterType="top.zander.model.HouseDeal">
     update house_deal
     set house_record = #{houseRecord,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=DATE},

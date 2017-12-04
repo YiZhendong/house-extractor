@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="top.zander.mapper.HouseFinishedMapper" >
+<mapper namespace="top.zander.dao.HouseFinishedMapper" >
   <resultMap id="BaseResultMap" type="top.zander.model.HouseFinished" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="house_record" property="houseRecord" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     delete from house_finished
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="HouseFinished" >
+  <insert id="insert" parameterType="top.zander.model.HouseFinished" >
     insert into house_finished (id, house_record, final_price,
     init_price, finished_period, change_number,
     cart_count, fav_count, view_count,
@@ -37,7 +37,7 @@
     #{cartCount,jdbcType=INTEGER}, #{favCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
     #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="HouseFinished" >
+  <insert id="insertSelective" parameterType="top.zander.model.HouseFinished" >
     insert into house_finished
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="HouseFinished" >
+  <update id="updateByPrimaryKeySelective" parameterType="top.zander.model.HouseFinished" >
     update house_finished
     <set >
       <if test="houseRecord != null" >
@@ -137,7 +137,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="HouseFinished" >
+  <update id="updateByPrimaryKey" parameterType="top.zander.model.HouseFinished" >
     update house_finished
     set house_record = #{houseRecord,jdbcType=VARCHAR},
       final_price = #{finalPrice,jdbcType=INTEGER},

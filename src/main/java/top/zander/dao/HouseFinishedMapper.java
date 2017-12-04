@@ -1,5 +1,6 @@
-package top.zander.mapper;
+package top.zander.dao;
 
+import org.apache.ibatis.annotations.Mapper;
 import top.zander.model.HouseFinished;
 
 /**
@@ -8,6 +9,7 @@ import top.zander.model.HouseFinished;
  * @author:yizhendong
  * @date:2017/12/4 21:40
  */
+@Mapper
 public interface HouseFinishedMapper {
     int deleteByPrimaryKey(Long id);
 

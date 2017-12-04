@@ -1,4 +1,4 @@
-package top.zander.mapper;
+package top.zander.dao;
 
 
 import org.apache.ibatis.annotations.Mapper;
