@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.zander.mapper.HouseKeyInfoMapper" >
+  <resultMap id="BaseResultMap" type="HouseKeyInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="house_record" property="houseRecord" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="sub_title" property="subTitle" jdbcType="VARCHAR" />
+    <result column="fav_count" property="favCount" jdbcType="INTEGER" />
+    <result column="cart_count" property="cartCount" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="INTEGER" />
+    <result column="unit_price" property="unitPrice" jdbcType="INTEGER" />
+    <result column="tax_text" property="taxText" jdbcType="INTEGER" />
+    <result column="room_layout" property="roomLayout" jdbcType="VARCHAR" />
+    <result column="room_number" property="roomNumber" jdbcType="INTEGER" />
+    <result column="room_total_floors" property="roomTotalFloors" jdbcType="VARCHAR" />
+    <result column="room_floor" property="roomFloor" jdbcType="VARCHAR" />
+    <result column="room_struct" property="roomStruct" jdbcType="VARCHAR" />
+    <result column="house_direction" property="houseDirection" jdbcType="VARCHAR" />
+    <result column="house_decoration" property="houseDecoration" jdbcType="VARCHAR" />
+    <result column="total_area" property="totalArea" jdbcType="DOUBLE" />
+    <result column="year_house_type" property="yearHouseType" jdbcType="VARCHAR" />
+    <result column="year" property="year" jdbcType="INTEGER" />
+    <result column="building_age" property="buildingAge" jdbcType="TINYINT" />
+    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
+    <result column="community_name" property="communityName" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="subway" property="subway" jdbcType="VARCHAR" />
+    <result column="cycle" property="cycle" jdbcType="VARCHAR" />
+    <result column="subway_text" property="subwayText" jdbcType="VARCHAR" />
+    <result column="subway_line" property="subwayLine" jdbcType="VARCHAR" />
+    <result column="visit_time" property="visitTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_deal" property="isDeal" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, house_record, title, sub_title, fav_count, cart_count, total_price, unit_price, 
+    tax_text, room_layout, room_number, room_total_floors, room_floor, room_struct, house_direction, 
+    house_decoration, total_area, year_house_type, year, building_age, house_type, community_name, 
+    district, subway, cycle, subway_text, subway_line, visit_time, update_time, create_time, is_deal
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_key_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_key_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="HouseKeyInfo" >
+    insert into house_key_info (id, house_record, title, 
+      sub_title, fav_count, cart_count, 
+      total_price, unit_price, tax_text, 
+      room_layout, room_number, room_total_floors, 
+      room_floor, room_struct, house_direction, 
+      house_decoration, total_area, year_house_type, 
+      year, building_age, house_type, 
+      community_name, district, subway, 
+      cycle, subway_text, subway_line, 
+      visit_time,update_time, create_time, is_deal)
+    values (#{id,jdbcType=INTEGER}, #{houseRecord,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{subTitle,jdbcType=VARCHAR}, #{favCount,jdbcType=INTEGER}, #{cartCount,jdbcType=INTEGER}, 
+      #{totalPrice,jdbcType=INTEGER}, #{unitPrice,jdbcType=INTEGER}, #{taxText,jdbcType=INTEGER},
+      #{roomLayout,jdbcType=VARCHAR}, #{roomNumber,jdbcType=INTEGER}, #{roomTotalFloors,jdbcType=VARCHAR}, 
+      #{roomFloor,jdbcType=VARCHAR}, #{roomStruct,jdbcType=VARCHAR}, #{houseDirection,jdbcType=VARCHAR}, 
+      #{houseDecoration,jdbcType=VARCHAR}, #{totalArea,jdbcType=DOUBLE}, #{yearHouseType,jdbcType=VARCHAR}, 
+      #{year,jdbcType=INTEGER}, #{buildingAge,jdbcType=TINYINT}, #{houseType,jdbcType=VARCHAR}, 
+      #{communityName,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{subway,jdbcType=VARCHAR}, 
+      #{cycle,jdbcType=VARCHAR}, #{subwayText,jdbcType=VARCHAR}, #{subwayLine,jdbcType=VARCHAR}, 
+      #{visitTime,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP},
+      #{isDeal,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="HouseKeyInfo" >
+    insert into house_key_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="houseRecord != null" >
+        house_record,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="subTitle != null" >
+        sub_title,
+      </if>
+      <if test="favCount != null" >
+        fav_count,
+      </if>
+      <if test="cartCount != null" >
+        cart_count,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="taxText != null" >
+        tax_text,
+      </if>
+      <if test="roomLayout != null" >
+        room_layout,
+      </if>
+      <if test="roomNumber != null" >
+        room_number,
+      </if>
+      <if test="roomTotalFloors != null" >
+        room_total_floors,
+      </if>
+      <if test="roomFloor != null" >
+        room_floor,
+      </if>
+      <if test="roomStruct != null" >
+        room_struct,
+      </if>
+      <if test="houseDirection != null" >
+        house_direction,
+      </if>
+      <if test="houseDecoration != null" >
+        house_decoration,
+      </if>
+      <if test="totalArea != null" >
+        total_area,
+      </if>
+      <if test="yearHouseType != null" >
+        year_house_type,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="buildingAge != null" >
+        building_age,
+      </if>
+      <if test="houseType != null" >
+        house_type,
+      </if>
+      <if test="communityName != null" >
+        community_name,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="subway != null" >
+        subway,
+      </if>
+      <if test="cycle != null" >
+        cycle,
+      </if>
+      <if test="subwayText != null" >
+        subway_text,
+      </if>
+      <if test="subwayLine != null" >
+        subway_line,
+      </if>
+      <if test="visitTime != null" >
+        visit_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="is_deal != null" >
+        is_deal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="houseRecord != null" >
+        #{houseRecord,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null" >
+        #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="favCount != null" >
+        #{favCount,jdbcType=INTEGER},
+      </if>
+      <if test="cartCount != null" >
+        #{cartCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="taxText != null" >
+        #{taxText,jdbcType=INTEGER},
+      </if>
+      <if test="roomLayout != null" >
+        #{roomLayout,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNumber != null" >
+        #{roomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="roomTotalFloors != null" >
+        #{roomTotalFloors,jdbcType=VARCHAR},
+      </if>
+      <if test="roomFloor != null" >
+        #{roomFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="roomStruct != null" >
+        #{roomStruct,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDirection != null" >
+        #{houseDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDecoration != null" >
+        #{houseDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="totalArea != null" >
+        #{totalArea,jdbcType=DOUBLE},
+      </if>
+      <if test="yearHouseType != null" >
+        #{yearHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="buildingAge != null" >
+        #{buildingAge,jdbcType=TINYINT},
+      </if>
+      <if test="houseType != null" >
+        #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="communityName != null" >
+        #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="subway != null" >
+        #{subway,jdbcType=VARCHAR},
+      </if>
+      <if test="cycle != null" >
+        #{cycle,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayText != null" >
+        #{subwayText,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayLine != null" >
+        #{subwayLine,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null" >
+        #{visitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_deal != null" >
+        #{is_deal,jdbcType=INREGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="HouseKeyInfo" >
+    update house_key_info
+    <set >
+      <if test="houseRecord != null" >
+        house_record = #{houseRecord,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null" >
+        sub_title = #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="favCount != null" >
+        fav_count = #{favCount,jdbcType=INTEGER},
+      </if>
+      <if test="cartCount != null" >
+        cart_count = #{cartCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="taxText != null" >
+        tax_text = #{taxText,jdbcType=INTEGER},
+      </if>
+      <if test="roomLayout != null" >
+        room_layout = #{roomLayout,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNumber != null" >
+        room_number = #{roomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="roomTotalFloors != null" >
+        room_total_floors = #{roomTotalFloors,jdbcType=VARCHAR},
+      </if>
+      <if test="roomFloor != null" >
+        room_floor = #{roomFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="roomStruct != null" >
+        room_struct = #{roomStruct,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDirection != null" >
+        house_direction = #{houseDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDecoration != null" >
+        house_decoration = #{houseDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="totalArea != null" >
+        total_area = #{totalArea,jdbcType=DOUBLE},
+      </if>
+      <if test="yearHouseType != null" >
+        year_house_type = #{yearHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="buildingAge != null" >
+        building_age = #{buildingAge,jdbcType=TINYINT},
+      </if>
+      <if test="houseType != null" >
+        house_type = #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="communityName != null" >
+        community_name = #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="subway != null" >
+        subway = #{subway,jdbcType=VARCHAR},
+      </if>
+      <if test="cycle != null" >
+        cycle = #{cycle,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayText != null" >
+        subway_text = #{subwayText,jdbcType=VARCHAR},
+      </if>
+      <if test="subwayLine != null" >
+        subway_line = #{subwayLine,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null" >
+        visit_time = #{visitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_deal != null" >
+        is_deal = #{is_deal,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="HouseKeyInfo" >
+    update house_key_info
+    set house_record = #{houseRecord,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      sub_title = #{subTitle,jdbcType=VARCHAR},
+      fav_count = #{favCount,jdbcType=INTEGER},
+      cart_count = #{cartCount,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=INTEGER},
+      tax_text = #{taxText,jdbcType=INTEGER},
+      room_layout = #{roomLayout,jdbcType=VARCHAR},
+      room_number = #{roomNumber,jdbcType=INTEGER},
+      room_total_floors = #{roomTotalFloors,jdbcType=VARCHAR},
+      room_floor = #{roomFloor,jdbcType=VARCHAR},
+      room_struct = #{roomStruct,jdbcType=VARCHAR},
+      house_direction = #{houseDirection,jdbcType=VARCHAR},
+      house_decoration = #{houseDecoration,jdbcType=VARCHAR},
+      total_area = #{totalArea,jdbcType=DOUBLE},
+      year_house_type = #{yearHouseType,jdbcType=VARCHAR},
+      year = #{year,jdbcType=INTEGER},
+      building_age = #{buildingAge,jdbcType=TINYINT},
+      house_type = #{houseType,jdbcType=VARCHAR},
+      community_name = #{communityName,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      subway = #{subway,jdbcType=VARCHAR},
+      cycle = #{cycle,jdbcType=VARCHAR},
+      subway_text = #{subwayText,jdbcType=VARCHAR},
+      subway_line = #{subwayLine,jdbcType=VARCHAR},
+      visit_time = #{visitTime,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      is_deal = #{is_deal,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteByHouseRecord">
+    delete from house_key_info where house_record = #{houseRecord}
+  </delete>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.zander.mapper.HouseFinishedMapper" >
+  <resultMap id="BaseResultMap" type="top.zander.model.HouseFinished" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="house_record" property="houseRecord" jdbcType="VARCHAR" />
+    <result column="final_price" property="finalPrice" jdbcType="INTEGER" />
+    <result column="init_price" property="initPrice" jdbcType="INTEGER" />
+    <result column="finished_period" property="finishedPeriod" jdbcType="INTEGER" />
+    <result column="change_number" property="changeNumber" jdbcType="INTEGER" />
+    <result column="cart_count" property="cartCount" jdbcType="INTEGER" />
+    <result column="fav_count" property="favCount" jdbcType="INTEGER" />
+    <result column="view_count" property="viewCount" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, house_record, final_price, init_price, finished_period, change_number, cart_count,
+    fav_count, view_count, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from house_finished
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from house_finished
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="HouseFinished" >
+    insert into house_finished (id, house_record, final_price,
+    init_price, finished_period, change_number,
+    cart_count, fav_count, view_count,
+    create_time)
+    values (#{id,jdbcType=BIGINT}, #{houseRecord,jdbcType=VARCHAR}, #{finalPrice,jdbcType=INTEGER},
+    #{initPrice,jdbcType=INTEGER}, #{finishedPeriod,jdbcType=INTEGER}, #{changeNumber,jdbcType=INTEGER},
+    #{cartCount,jdbcType=INTEGER}, #{favCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
+    #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="HouseFinished" >
+    insert into house_finished
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="houseRecord != null" >
+        house_record,
+      </if>
+      <if test="finalPrice != null" >
+        final_price,
+      </if>
+      <if test="initPrice != null" >
+        init_price,
+      </if>
+      <if test="finishedPeriod != null" >
+        finished_period,
+      </if>
+      <if test="changeNumber != null" >
+        change_number,
+      </if>
+      <if test="cartCount != null" >
+        cart_count,
+      </if>
+      <if test="favCount != null" >
+        fav_count,
+      </if>
+      <if test="viewCount != null" >
+        view_count,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="houseRecord != null" >
+        #{houseRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="finalPrice != null" >
+        #{finalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="initPrice != null" >
+        #{initPrice,jdbcType=INTEGER},
+      </if>
+      <if test="finishedPeriod != null" >
+        #{finishedPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="changeNumber != null" >
+        #{changeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cartCount != null" >
+        #{cartCount,jdbcType=INTEGER},
+      </if>
+      <if test="favCount != null" >
+        #{favCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null" >
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="HouseFinished" >
+    update house_finished
+    <set >
+      <if test="houseRecord != null" >
+        house_record = #{houseRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="finalPrice != null" >
+        final_price = #{finalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="initPrice != null" >
+        init_price = #{initPrice,jdbcType=INTEGER},
+      </if>
+      <if test="finishedPeriod != null" >
+        finished_period = #{finishedPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="changeNumber != null" >
+        change_number = #{changeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cartCount != null" >
+        cart_count = #{cartCount,jdbcType=INTEGER},
+      </if>
+      <if test="favCount != null" >
+        fav_count = #{favCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null" >
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="HouseFinished" >
+    update house_finished
+    set house_record = #{houseRecord,jdbcType=VARCHAR},
+      final_price = #{finalPrice,jdbcType=INTEGER},
+      init_price = #{initPrice,jdbcType=INTEGER},
+      finished_period = #{finishedPeriod,jdbcType=INTEGER},
+      change_number = #{changeNumber,jdbcType=INTEGER},
+      cart_count = #{cartCount,jdbcType=INTEGER},
+      fav_count = #{favCount,jdbcType=INTEGER},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

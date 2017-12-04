@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.zander.mapper.HouseBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="top.zander.model.HouseBaseInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="house_record" property="houseRecord" jdbcType="BIGINT" />
+    <result column="layout_detail" property="layoutDetail" jdbcType="VARCHAR" />
+    <result column="floor_info" property="floorInfo" jdbcType="VARCHAR" />
+    <result column="total_area" property="totalArea" jdbcType="VARCHAR" />
+    <result column="room_struct" property="roomStruct" jdbcType="VARCHAR" />
+    <result column="inner_area" property="innerArea" jdbcType="VARCHAR" />
+    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
+    <result column="house_direction" property="houseDirection" jdbcType="VARCHAR" />
+    <result column="building_struct" property="buildingStruct" jdbcType="VARCHAR" />
+    <result column="house_decoration" property="houseDecoration" jdbcType="VARCHAR" />
+    <result column="one_floor_houses" property="oneFloorHouses" jdbcType="VARCHAR" />
+    <result column="heating" property="heating" jdbcType="VARCHAR" />
+    <result column="lift" property="lift" jdbcType="VARCHAR" />
+    <result column="right_year" property="rightYear" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, house_record, layout_detail, floor_info, total_area, room_struct, inner_area, 
+    house_type, house_direction, building_struct, house_decoration, one_floor_houses, 
+    heating, lift, right_year
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_base_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_base_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.zander.model.HouseBaseInfo" >
+    insert into house_base_info (id, house_record, layout_detail, 
+      floor_info, total_area, room_struct, 
+      inner_area, house_type, house_direction, 
+      building_struct, house_decoration, one_floor_houses, 
+      heating, lift, right_year
+      )
+    values (#{id,jdbcType=INTEGER}, #{houseRecord,jdbcType=BIGINT}, #{layoutDetail,jdbcType=VARCHAR}, 
+      #{floorInfo,jdbcType=VARCHAR}, #{totalArea,jdbcType=VARCHAR}, #{roomStruct,jdbcType=VARCHAR}, 
+      #{innerArea,jdbcType=VARCHAR}, #{houseType,jdbcType=VARCHAR}, #{houseDirection,jdbcType=VARCHAR}, 
+      #{buildingStruct,jdbcType=VARCHAR}, #{houseDecoration,jdbcType=VARCHAR}, #{oneFloorHouses,jdbcType=VARCHAR}, 
+      #{heating,jdbcType=VARCHAR}, #{lift,jdbcType=VARCHAR}, #{rightYear,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="HouseBaseInfo" >
+    insert into house_base_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="houseRecord != null" >
+        house_record,
+      </if>
+      <if test="layoutDetail != null" >
+        layout_detail,
+      </if>
+      <if test="floorInfo != null" >
+        floor_info,
+      </if>
+      <if test="totalArea != null" >
+        total_area,
+      </if>
+      <if test="roomStruct != null" >
+        room_struct,
+      </if>
+      <if test="innerArea != null" >
+        inner_area,
+      </if>
+      <if test="houseType != null" >
+        house_type,
+      </if>
+      <if test="houseDirection != null" >
+        house_direction,
+      </if>
+      <if test="buildingStruct != null" >
+        building_struct,
+      </if>
+      <if test="houseDecoration != null" >
+        house_decoration,
+      </if>
+      <if test="oneFloorHouses != null" >
+        one_floor_houses,
+      </if>
+      <if test="heating != null" >
+        heating,
+      </if>
+      <if test="lift != null" >
+        lift,
+      </if>
+      <if test="rightYear != null" >
+        right_year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="houseRecord != null" >
+        #{houseRecord,jdbcType=BIGINT},
+      </if>
+      <if test="layoutDetail != null" >
+        #{layoutDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="floorInfo != null" >
+        #{floorInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalArea != null" >
+        #{totalArea,jdbcType=VARCHAR},
+      </if>
+      <if test="roomStruct != null" >
+        #{roomStruct,jdbcType=VARCHAR},
+      </if>
+      <if test="innerArea != null" >
+        #{innerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null" >
+        #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDirection != null" >
+        #{houseDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStruct != null" >
+        #{buildingStruct,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDecoration != null" >
+        #{houseDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="oneFloorHouses != null" >
+        #{oneFloorHouses,jdbcType=VARCHAR},
+      </if>
+      <if test="heating != null" >
+        #{heating,jdbcType=VARCHAR},
+      </if>
+      <if test="lift != null" >
+        #{lift,jdbcType=VARCHAR},
+      </if>
+      <if test="rightYear != null" >
+        #{rightYear,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="HouseBaseInfo" >
+    update house_base_info
+    <set >
+      <if test="houseRecord != null" >
+        house_record = #{houseRecord,jdbcType=BIGINT},
+      </if>
+      <if test="layoutDetail != null" >
+        layout_detail = #{layoutDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="floorInfo != null" >
+        floor_info = #{floorInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalArea != null" >
+        total_area = #{totalArea,jdbcType=VARCHAR},
+      </if>
+      <if test="roomStruct != null" >
+        room_struct = #{roomStruct,jdbcType=VARCHAR},
+      </if>
+      <if test="innerArea != null" >
+        inner_area = #{innerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null" >
+        house_type = #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDirection != null" >
+        house_direction = #{houseDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStruct != null" >
+        building_struct = #{buildingStruct,jdbcType=VARCHAR},
+      </if>
+      <if test="houseDecoration != null" >
+        house_decoration = #{houseDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="oneFloorHouses != null" >
+        one_floor_houses = #{oneFloorHouses,jdbcType=VARCHAR},
+      </if>
+      <if test="heating != null" >
+        heating = #{heating,jdbcType=VARCHAR},
+      </if>
+      <if test="lift != null" >
+        lift = #{lift,jdbcType=VARCHAR},
+      </if>
+      <if test="rightYear != null" >
+        right_year = #{rightYear,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="HouseBaseInfo" >
+    update house_base_info
+    set house_record = #{houseRecord,jdbcType=BIGINT},
+      layout_detail = #{layoutDetail,jdbcType=VARCHAR},
+      floor_info = #{floorInfo,jdbcType=VARCHAR},
+      total_area = #{totalArea,jdbcType=VARCHAR},
+      room_struct = #{roomStruct,jdbcType=VARCHAR},
+      inner_area = #{innerArea,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=VARCHAR},
+      house_direction = #{houseDirection,jdbcType=VARCHAR},
+      building_struct = #{buildingStruct,jdbcType=VARCHAR},
+      house_decoration = #{houseDecoration,jdbcType=VARCHAR},
+      one_floor_houses = #{oneFloorHouses,jdbcType=VARCHAR},
+      heating = #{heating,jdbcType=VARCHAR},
+      lift = #{lift,jdbcType=VARCHAR},
+      right_year = #{rightYear,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteByHouseRecord">
+    delete from house_base_info where house_record = #{houseRecord}
+  </delete>
+</mapper>
